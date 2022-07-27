@@ -1,0 +1,10 @@
+{
+  "files": {
+    "main.js": "/GTD-TODO/static/js/main.4ecc31de.js",
+    "index.html": "/GTD-TODO/index.html",
+    "main.4ecc31de.js.map": "/GTD-TODO/static/js/main.4ecc31de.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.4ecc31de.js"
+  ]
+}
