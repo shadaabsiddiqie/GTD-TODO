@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.js": "/GTD-TODO/static/js/main.4ecc31de.js",
+    "main.js": "/GTD-TODO/static/js/main.1bcf22cb.js",
     "index.html": "/GTD-TODO/index.html",
-    "main.4ecc31de.js.map": "/GTD-TODO/static/js/main.4ecc31de.js.map"
+    "main.1bcf22cb.js.map": "/GTD-TODO/static/js/main.1bcf22cb.js.map"
   },
   "entrypoints": [
-    "static/js/main.4ecc31de.js"
+    "static/js/main.1bcf22cb.js"
   ]
 }
