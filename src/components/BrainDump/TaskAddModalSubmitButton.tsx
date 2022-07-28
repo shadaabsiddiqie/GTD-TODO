@@ -1,9 +1,8 @@
 import * as React from 'react';
 import Button from '@mui/material/Button';
-import { useSelector, useDispatch } from 'react-redux'
-import {add, changeTaskType} from '../Redux/taskSlice'
+import {  useDispatch } from 'react-redux'
+import {add} from '../Redux/taskSlice'
 import { ITaskCardProps } from '../TaskCard/TaskCard';
-import { TaskTypeEnum } from '../../Enums';
 export interface ITaskAddModalSubmitButtonProps {
     task : ITaskCardProps
 }

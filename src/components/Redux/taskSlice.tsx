@@ -27,13 +27,20 @@ export const taskSlice = createSlice({
         },
         add: (state, action: PayloadAction<ITaskCardProps>) => {
             let newTask = action.payload;
-            newTask.id = state.TasksData.length + 1;
+            newTask.id = state.TasksData.reduce((maxId, task) => 
+                                    Math.max(task.id, maxId), -1) + 1;
             state.TasksData.push(newTask)
+            localStorage.setItem('TasksData',JSON.stringify(state.TasksData));
+        },
+        removeTask: (state, action: PayloadAction<ITaskCardProps>) => {
+            let newState = state.TasksData
+                .filter(task=> task.id !== action.payload.id);
+            state.TasksData = newState;
             localStorage.setItem('TasksData',JSON.stringify(state.TasksData));
         },
     },
 })
 
 export const task_data = (state: TaskState) => state.TasksData;
-export const { changeTaskType, add } = taskSlice.actions;
+export const { changeTaskType, add ,removeTask} = taskSlice.actions;
 export default taskSlice.reducer;

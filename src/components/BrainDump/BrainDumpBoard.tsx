@@ -1,7 +1,7 @@
 import * as React from 'react';
 import TaskCard, {ITaskCardProps} from '../TaskCard/TaskCard';
 import BrainDumpTaskButtons from './BrainDumpTaskButtons';
-import { Container, Stack, IconButton, Box, Fab, Grid } from '@mui/material';
+import {Box, Fab, Grid } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import NavigationIcon from '@mui/icons-material/Navigation';
 import AddTaskModal from './TaskModal';
@@ -28,6 +28,16 @@ export default class BrainDumpBoard extends React.Component<IBrainDumpBoardProps
         });
     });
   }
+    closeModalCard = () => {
+        this.setState({
+            ModalVisible: false,
+        });
+    }
+    openModalCard = () => {
+        this.setState({
+            ModalVisible: true,
+        });
+    }
   brainDumpCards = ()=>{
     return <>
         {
@@ -57,9 +67,10 @@ export default class BrainDumpBoard extends React.Component<IBrainDumpBoardProps
             <Grid container spacing={2}>
                 {this.brainDumpCards()}
             </Grid>
-            <Box textAlign='center' sx={{marginTop: 2}}>
+            <Box textAlign='center' sx={{marginTop: 2}} 
+                onClick={()=>this.openModalCard()}>
                 <Fab color="primary" aria-label="add">
-                <AddIcon />
+                    <AddIcon />
                 </Fab>    
             </Box>
             <Box textAlign='center' sx={{bottom: 5, right: 5, position: "absolute"}}>
@@ -67,7 +78,9 @@ export default class BrainDumpBoard extends React.Component<IBrainDumpBoardProps
                     <NavigationIcon />
                 </Fab>
             </Box>
-            <AddTaskModal taskData={this.emptyTaskData()}/>
+            <AddTaskModal taskData={this.emptyTaskData()} 
+                open = {this.state.ModalVisible}
+                handleClose = {this.closeModalCard}/>
         </>
     );
   }

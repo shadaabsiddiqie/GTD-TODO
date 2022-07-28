@@ -11,7 +11,7 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-import AdbIcon from '@mui/icons-material/Adb';
+import AdbIcon from '@mui/icons-material/RocketLaunch';
 import {Link} from 'react-router-dom';
 const pages = ['Braindump', 'Work', 'Non Actionable'];
 const pageLinks = ['/braindumpboard', '/workboard', '/nonactionable'];

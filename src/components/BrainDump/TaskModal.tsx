@@ -1,18 +1,13 @@
-import React, {useState} from 'react';
+import React from 'react';
 import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
-import { FormGroup, FormControl, FormControlLabel, 
-    FormLabel , TextField, InputLabel, Select, 
-    MenuItem, Switch, ToggleButtonGroup, ToggleButton, Fab } from '@mui/material';
+import { FormGroup, FormControl, 
+    FormLabel , TextField, 
+    MenuItem, ToggleButtonGroup, ToggleButton } from '@mui/material';
 import { ITaskCardProps } from '../TaskCard/TaskCard';
 import { TaskPriorityEnum } from '../../Enums';
-import { styled } from '@mui/material/styles';
-import AddIcon from '@mui/icons-material/Add';
-import NavigationIcon from '@mui/icons-material/Navigation';
-import {add, changeTaskType} from '../Redux/taskSlice'
-import { useSelector, useDispatch } from 'react-redux'
+import {add} from '../Redux/taskSlice'
+import { useDispatch } from 'react-redux'
 import TaskAddModalSubmitButton from './TaskAddModalSubmitButton';
 const style = {
     position: 'absolute' as 'absolute',
@@ -28,23 +23,29 @@ const style = {
 export interface IAddTaskModalState {
     open: boolean,
     taskData: ITaskCardProps,
+
 }
 
 
 export interface IAddTaskModalProps {
+    open: boolean,
     taskData: ITaskCardProps,
+    handleClose: Function,
 }
 
 export default class AddTaskModal extends React.Component<IAddTaskModalProps, IAddTaskModalState> {
     constructor(props: IAddTaskModalProps) {
         super(props);
         this.state = {
-            open: true,
+            open: this.props.open,
             taskData: this.props.taskData,
         }
     }
     handleOpen = () => this.setState({open: true});
-    handleClose = () => this.setState({open: false});  
+    handleClose = () => {
+        this.setState({open: false})
+        this.props.handleClose();
+    };  
     handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = event.target;
         this.setState({
@@ -54,6 +55,12 @@ export default class AddTaskModal extends React.Component<IAddTaskModalProps, IA
             }
         });
     }
+    
+    componentDidUpdate(pProps:IAddTaskModalProps, pState:IAddTaskModalState){
+        if (pProps.open !== this.props.open && this.props.open !== pState.open){
+            this.setState({open: this.props.open});
+        }
+    };
     handleMouse = (event: React.MouseEvent<HTMLElement>, value: boolean) => {
         this.setState({
             taskData: {

@@ -4,7 +4,6 @@ import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
-import TaskCircularProgress from "./TaskCircularProgress";
 import { TaskPriorityEnum, TaskTypeEnum } from "../../Enums";
 import TaskPriorityIcon from "./TaskPriorityIcon";
 import TaskQuickIcon from "./TaskQuickIcon";
@@ -22,13 +21,6 @@ export interface ITaskCardProps {
 }
 
 export default class TaskCard extends React.Component<ITaskCardProps> {
-  constructor(props: ITaskCardProps) {
-    super(props);
-
-    // this.state = {
-    // }
-  }
-
   public render() {
     return (
       <Card sx={{ maxWidth: 345 }}>

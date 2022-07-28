@@ -1,5 +1,4 @@
 import React from 'react';
-import Rating from '@mui/material/Rating';
 import HourglassEmptyRoundedIcon from '@mui/icons-material/HourglassEmptyRounded';
 import HourglassBottomRoundedIcon from '@mui/icons-material/HourglassBottomRounded';
 import HourglassFullRoundedIcon from '@mui/icons-material/HourglassFullRounded';

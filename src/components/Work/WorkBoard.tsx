@@ -1,17 +1,14 @@
 import * as React from 'react';
 import TaskCard, {ITaskCardProps} from '../TaskCard/TaskCard';
 // import BrainDumpTaskButtons from './BrainDumpTaskButtons';
-import { Container, Stack, IconButton, Box, Fab, Grid } from '@mui/material';
+import { Grid } from '@mui/material';
 // import AddIcon from '@mui/icons-material/Add';
 // import NavigationIcon from '@mui/icons-material/Navigation';
 // import AddTaskModal from './AddTaskModal';
-import { useSelector, useDispatch } from 'react-redux'
 import { TaskTypeEnum } from '../../Enums';
-import BrainDumpTaskButtons from '../BrainDump/BrainDumpTaskButtons';
 import ActionableTaskButtons from './ActionableTaskButtons';
 import CompleatedTaskButtons from './CompleatedTaskButtons';
 import InProgressTaskButtons from './InProgressTaskButtons';
-import {task_data} from '../Redux/taskSlice';
 import {taskStore} from '../Redux/taskStore';
 export interface IWorkBoardProps {
 }
@@ -38,16 +35,12 @@ buttonsOfType = (taskSent: ITaskCardProps)=>{
     switch (taskSent.type) {
         case TaskTypeEnum.ACTIONABLE:
             return <ActionableTaskButtons task={taskSent}/>;
-        break;
         case TaskTypeEnum.INPROGRESS:
             return <InProgressTaskButtons task={taskSent}/>;
-        break;
         case TaskTypeEnum.COMPLEATED:
-            return <CompleatedTaskButtons/>;
-        break;
+            return <CompleatedTaskButtons task={taskSent}/>;
         default:
             return <></>;
-        break;
     }
 }  
 tasksOfType = (type: TaskTypeEnum | undefined)=>{
